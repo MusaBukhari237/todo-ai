@@ -1,3 +1,38 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+input {
+  outline-style: none;
+  outline: none;
+  box-shadow: none;
+  border-color: transparent;
+}
+
+
+.notification {
+  padding: 0.8rem;
+  padding-right: 0.4rem;
+  transition: background-position 8s; /* Smooth transition effect */
+  background-position: 0% 0;
+}
+
+.notification.run {
+  background: linear-gradient(
+    to right,
+    var(--fallback-su,oklch(var(--su)/1)) 0%,
+    var(--fallback-su,oklch(var(--su)/1)) 20%,
+    var(--fallback-su,oklch(var(--su)/1)) 50%,
+    #fff 50%,
+    #fff 70%,
+    #fff 0%
+  );
+  background-size: 300% 100%;
+  background-position: 100% 0;
+}
+
+.notification > button {
+  min-height: 2rem;
+  max-height: 2rem;
+  width: 2rem;
+}

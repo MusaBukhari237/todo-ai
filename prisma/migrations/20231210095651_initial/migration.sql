@@ -1,0 +1,27 @@
+-- CreateTable
+CREATE TABLE `todo` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `title` VARCHAR(191) NOT NULL,
+    `description` VARCHAR(191) NOT NULL,
+    `priority` INTEGER NOT NULL DEFAULT 1,
+    `dateTime` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `status` INTEGER NOT NULL DEFAULT 1,
+    `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `isActive` BOOLEAN NOT NULL DEFAULT true,
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `label` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `title` VARCHAR(191) NOT NULL,
+    `todoId` INTEGER NOT NULL,
+    `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `isActive` BOOLEAN NOT NULL DEFAULT true,
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- AddForeignKey
+ALTER TABLE `label` ADD CONSTRAINT `label_todoId_fkey` FOREIGN KEY (`todoId`) REFERENCES `todo`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
